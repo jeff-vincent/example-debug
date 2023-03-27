@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: debug-example
+  labels:
+    app: debug-example
+spec:
+  selector:
+    matchLabels:
+      api: debug-example
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: debug-example
+        api: debug-example
+    spec:
+      containers:
+        - name: debug-example
+          image: jdvincent/debug-example:latest

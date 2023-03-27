@@ -1,0 +1,17 @@
+apiVersion: skaffold/v4beta3
+kind: Config
+metadata:
+  name: example-debug
+build:
+  artifacts:
+    - image: jdvincent/debug-example
+      docker:
+        dockerfile: Dockerfile
+deploy:
+  helm:
+    releases:
+      - name: debug-example
+        chartPath: k8s
+        valuesFiles:
+          - k8s/values.yaml
+        version: 0.1.0
